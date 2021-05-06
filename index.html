@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Company Directory</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">     
+
+</head>
+
+<body>
+
+    <!-- Main Navbar -->
+    <nav id="mainNav" class="pb-0 navbar navbar-expand fixed-top d-flex flex-column justify-content-between ">
+        <!-- Navbar items -->
+        <ul class="navbar-nav w-100 px-2 py-1 d-flex flex-md-row flex-column justify-content-md-around align-items-center" id="mainNav-content">
+            <li class="nav-item justify-content-center text-center my-auto px-2 d-none d-xl-block" id="company-brand">
+                <!-- <strong class="justify-content-center text-center my-auto d-xl-none">CD</strong> -->
+                <strong class="justify-content-center text-center my-auto d-none d-xl-block">COMPANY DIRECTORY</strong>
+            </li>
+            <li class="nav-item px-2">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <label for="searchInput" class="visually-hidden">Search</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="search" class="form-control" id="searchInput" type="text" placeholder="Search..." aria-label="Search bar">
+                            <button id="sortButton1" type="button" class="btn btn-main sortButton">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item d-none d-md-inline-block px-2">
+                <div id="viewToggler" class="btn-group" role="group" aria-label="viewToggler">
+                    <input type="radio" class="btn-check btnradioPersonnel" name="btnViewDesk" id="btnradioPersonnel1" autocomplete="off" checked>
+                    <label class="btn btn-main" for="btnradioPersonnel1">
+                        <span class="pe-lg-2"><i class="bi bi-list-ul"></i></span>
+                        <span class="d-none d-lg-inline-block">List</span>
+                    </label>
+                  
+                    <input type="radio" class="btn-check btnradioGrid" name="btnViewDesk" id="btnradioGrid1" autocomplete="off">
+                    <label class="btn btn-main" for="btnradioGrid1">
+                        <span class="pe-lg-2"><i class="bi bi-grid-fill"></i></span>
+                        <span class="d-none d-lg-inline-block">Grid</span>
+                    </label>
+                  
+                    <!-- <input type="radio" class="btn-check btnradioOrg" name="btnViewDesk" id="btnradioOrg1" autocomplete="off">
+                    <label class="btn btn-main" for="btnradioOrg1">
+                        <span class="pe-lg-2"><i class="bi bi-diagram-3-fill"></i></span>
+                        <span class="d-none d-lg-inline-block">Org</span>
+                    </label> -->
+                  </div>
+            </li>
+            <li class="nav-item d-none d-md-inline-block px-2">
+                <ul class="navbar-nav">
+                    <li class="nav-item my-auto pe-2 d-none deleteText">
+                        <span>SELECT PERSONNEL</span>
+                    </li>
+                    <li class="nav-item dropdown ps-2">
+                        <a class="btn btn-main dropdown-toggle" href="#" id="editOptions" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="pe-2">
+                                <i class="bi bi-pencil"></i>
+                            </span>
+                            <span>Edit</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="editOptions">
+                            <li><a class="dropdown-item add-person-btn" href="#">Add Personnel</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item show-del-person-btn" href="#">Remove Personnel</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item more-option-btn" href="#">More Options</a></li>
+
+                        </ul>
+
+                        <div class="btn-group d-none" role="group" id="delete-btn-group" aria-label="delete-btn-group">
+                            <button type="button" class="btn btn-main cancelDelete">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-main deleteAll">
+                                Delete
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+        <!-- Scroller -->
+        <ul class="navbar-nav w-100 d-flex justify-content-center">
+            <li class="nav-item px-1 scroll-alpha">
+                <button class="btn btn-sm btn-main" id="scrollLeft">
+                    <i class="bi bi-caret-left-fill"></i>
+                </button>
+            </li>
+            <!-- A-Z scroller -->
+            <li id="alphaScroll" class="px-2 py-1">
+                <!-- add via js -->
+            </li>
+            <li class="nav-item px-1 scroll-alpha">
+                <button class="btn btn-sm btn-main" id="scrollRight">
+                    <i class="bi bi-caret-right-fill"></i>
+                </button>
+            </li>
+            <li id="MOB-delete-text" class="nav-item px-2 d-none">
+                <span>SELECT PERSONNEL</span>
+            </li>
+        </ul>
+
+    </nav>
+    
+    <!-- Mobile Bottom Navbar -->
+    <nav id="mobileBottomNav" class="navbar p-0 navbar-expand fixed-bottom d-md-none">
+        <ul id="viewToggler" class="navbar-nav w-100 justify-content-around" role="group" aria-label="viewToggler">
+            <li class="nav-item">
+                <input type="radio" class="btn-check btnradioPersonnel" name="btnViewMob" id="btnradioPersonnel2" autocomplete="off" checked>
+                <label class="btn btn-mobile-bar shadow-none" for="btnradioPersonnel2">
+                    <i class="bi bi-list-ul"></i>
+                    <span class="CTAs d-block">List</span>
+                </label>
+            </li>
+            <li class="nav-item" id="FAB-toggle">
+                <div class="FAB-option">
+                    <button class="btn FAB-sub-btn more-option-btn" id="">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                </div>
+                <div class="FAB-option">
+                    <button class="btn FAB-sub-btn show-del-person-btn" id="show-delMOB">
+                        <i class="bi bi-person-dash-fill"></i>
+                    </button>
+                    <button type="button" id="MOB-cancel" class="btn btn-delete-cancel cancelDelete d-none">
+                        Cancel
+                    </button>
+                </div>
+                <div class="FAB-option">
+                    <button class="btn FAB-sub-btn add-person-btn" id="">
+                        <i class="bi bi-person-plus-fill"></i>
+                    </button>
+                    <button type="button" id="MOB-delete" class="btn btn-delete deleteAll d-none">
+                        Delete
+                    </button>
+                </div>
+                <button class="btn FAB-button position-absolute bottom-50" id="mobileEditButton">
+                    <span id="" class="d-block">
+                        <i class="bi bi-pencil-fill"></i>
+                    </span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <input type="radio" class="btn-check btnradioGrid" name="btnViewMob" id="btnradioGrid2" autocomplete="off">
+                <label class="btn btn-mobile-bar shadow-none" for="btnradioGrid2">
+                    <i class="bi bi-grid-fill"></i>
+                    <span class="CTAs d-block">Grid</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Content  -->
+        <div class="p-0" id="content">
+            <div data-bs-spy="scroll" 
+            data-bs-target="#alphaHtml" class="row pb-4 p-2" id="contentTypes">
+            </div>
+        </div>
+    </main> 
+
+
+
+    <!-- MODALS -->
+    <!-- Sort/Search Options -->
+    <div class="modal fade" id="sortModal" tabindex="-1" aria-labelledby="sortModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sortModalTitle">Options</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column justify-content-between" id="sortModalBody">
+                <div class="row my-1"> 
+                    <div class="col my-1">
+                        <h6>Sort Personnel By</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sortRadio" id="sortFN" value="FN">
+                            <label class="form-check-label" for="sortFN">
+                                <span>First Name</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sortRadio" id="sortLN" value="LN">
+                            <label class="form-check-label" for="sortLN">
+                                <span>Last Name</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sortRadio" id="sortJT" value="JT">
+                            <label class="form-check-label" for="sortJT">
+                                <span>Job Title</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sortRadio" id="sortDP" value="DP">
+                            <label class="form-check-label" for="sortDP">
+                                <span>Department*</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sortRadio" id="sortLC" value="LC">
+                            <label class="form-check-label" for="sortLC">
+                                <span>Location*</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col my-1">
+                        <h6>Search For</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="searchRadio" id="searchFN" value="FN">
+                            <label class="form-check-label" for="searchFN">
+                                <span>First Name</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="searchRadio" id="searchLN" value="LN">
+                            <label class="form-check-label" for="searchLN">
+                                <span>Last Name</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="searchRadio" id="searchJT" value="JT">
+                            <label class="form-check-label" for="searchJT">
+                                <span>Job Title</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="searchRadio" id="searchDP" value="DP">
+                            <label class="form-check-label" for="searchDP">
+                                <span>Department*</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="searchRadio" id="searchLC" value="LC">
+                            <label class="form-check-label" for="searchLC">
+                                <span>Location*</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="col text-center">
+                        <button id="themeButton" type="button" class="btn btn-main">
+                            Theme <i class="bi bi-paint-bucket"></i>
+                        </button>
+                    </div>                
+                </div>
+            </div>
+            <div class="modal-footer text-start">
+                <div class="row" id="sort-note">
+                    <p class="mb-1">*Locations and departments with 0 personnel will not be displayed.</p> 
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Details/edit person -->
+    <div class="modal fade" id="personnelDetailsModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="editModalTitle">Personnel Name</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editPersonnelForm" class="modal-edit-form d-none d-flex justify-content-between flex-column h-100">
+                    <div class="modal-inputs">
+                        <div class="row mb-3">
+                            <div class="col-sm">
+                                <label for="personEditFname" class="form-label">First Name</label>
+                                <input value="" type="text" class="form-control" id="personEditFname">
+                            </div>
+                            <div class="col-sm">
+                                <label for="personEditLname" class="form-label">Last Name</label>
+                                <input value="" type="text" class="form-control" id="personEditLname">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm">
+                                <label for="personEditJob" class="form-label">Job</label>
+                                <input type="text" class="form-control" id="personEditJob">
+                            </div>
+                            <div class="col-sm">
+                                <label for="personEditDep" class="form-label">Department</label>
+                                <select class="form-select" name="departmentEditDrop" id="personEditDep">
+                                <option selected disabled value="">Select</option>
+                                <!-- Add via Js -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm">
+                                <div class="">
+                                    <label for="personEditEmail" class="form-label">Email Address</label>
+                                    <input value="" type="email" class="form-control" id="personEditEmail">
+                                </div>
+                                <div class="">
+                                    <label for="personId" class="form-label d-none">Person Id</label>
+                                    <input value="" class="form-control d-none" id="personId">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-submit">
+                        <div class="row pb-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-main editModalPerson w-100">
+                                    Cancel
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button id="submitPersonChanges" class="btn btn-main w-100" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-read-only d-flex justify-content-between flex-column h-100" class="d-block">
+                    <div id="modalPersonBody">
+
+                    </div>
+                    <div id="modal-edit">
+                        <button type="button" class="btn btn-main editModalPerson w-100" aria-label="Edit">
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center form-message w-100">
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Add Person  -->
+    <div class="modal" id="addPersonModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalAddPersonTitle">
+                New Personnel
+            </h5>
+            <button type="button" class="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalAddPersonBody">
+                <form id="addPersonnelForm" class="d-flex justify-content-between flex-column h-100">
+                    <div class="row mb-3">
+                        <div class="col-sm">
+                            <label for="personInputFname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="personInputFname">
+                        </div>
+                        <div class="col-sm">
+                            <label for="personInputLname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="personInputLname">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm">
+                            <label for="personInputJob" class="form-label">Job</label>
+                            <input type="text" class="form-control" id="personInputJob">
+                        </div>
+                        <div class="col-sm">
+                            <label for="personInputDep" class="form-label">Department</label>
+                            <select class="form-select" id="personInputDep">
+                            <option selected disabled value="">Select</option>
+                            <!-- Add via Js -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm">
+                            <label for="personInputEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="personInputEmail">
+                        </div>
+                    </div>
+                    <div class="modal-submit row pb-3">
+                        <button id="submitPersonBtn" class="btn btn-main shadow-none" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center form-message w-100">
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Edit More Options -->
+    <div class="modal fade" id="editMoreModal" tabindex="-1" aria-labelledby="editMoreModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editMoreModalTitle">Further Edit Options</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editModalBody">
+                <div class="" id="locDepEdit">
+
+                </div>
+                <!-- <div class="accordion-item mb-2" id="jobEdit">
+
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <div class="text-center w-100" id="edit-modal-message">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Confrim Delete -->
+    <div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalTitle">Delete Confirmation</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column justify-content-between" id="confirmDeleteModalBody">
+                <div class="row">
+                    <div class="col">
+                        <p class="text-center">Are you sure you want to delete the selected personnel?</p>
+                        <div id="deleteList">
+                            <i>insert personnel list here</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col">
+                        <p class="text-center">This process cannot be undone.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row text-center w-100">
+                    <div class="col">
+                        <button id="cancelDeleteModal" type="button" data-bs-dismiss="modal" class="btn btn-main w-100 cancelDelete">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button id="confirmDeleteModal" type="button" data-bs-dismiss="modal" class="btn btn-main w-100">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Confrim Add/update -->
+    <div class="modal" id="addUpdateModal" tabindex="-1" aria-labelledby="addUpdateModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUpdateModalTitle">Title</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="confirmAddModalBody">
+                <div class="row">
+                    <!-- JS BODY -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">OK</button>
+              </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
