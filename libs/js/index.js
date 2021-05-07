@@ -1355,18 +1355,20 @@ function getAllLocations(departmentsData) {
             // MORE OPTIONS MODAL - HTML TEMPLATES
             function addEditLocDep(data) {
                 var htmlToAdd = `<h6 class="text-center border border-1">Locations and Departments</h6>
-                <div class="accordion mb-2" id="accordionLocations">`
+                <div class="accordion accordion-flush mb-2" id="accordionLocations">`
 
                 $.each(data, function() {
                     // start accord item
-                    htmlToAdd += '<div class="accordion-item px-2">';
+                    htmlToAdd += '<div class="accordion-item bg-transparent px-2">';
                     // add accord item title
                     htmlToAdd += 
                     `<h6 class="accordion-header" id="">
                         <button class="btn btn-sm btn-main-outline w-100 my-1 accord-loc mb-0 d-flex justify-content-between" type="button" 
                         data-bs-toggle="collapse" data-bs-target="#${this.name.slice(0, 3)}" aria-expanded="false" 
                         aria-controls="${this.name.slice(0, 3)}">
-                        <span>${this.name}</span><span><i class="bi bi-caret-down-fill"></i></span>
+                        <span>${this.name}</span><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                      </svg></span>
                         </button>
                     </h6>`;
 

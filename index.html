@@ -8,14 +8,10 @@
 
     <title>Company Directory</title>
 
-    <!-- Bootstrap CSS CDN -->
-    <!-- CSS only -->
+    <!-- Bootstrap CSS -->
     <link href="./vendor/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./libs/css/index.css">
-
-    <!-- bootstrap icons -->
-    <link rel="stylesheet" href="./vendor/css/bootstrap-icons-1.4.1">
 
 </head>
 
@@ -35,11 +31,18 @@
                         <label for="searchInput" class="visually-hidden">Search</label>
                         <div class="input-group">
                             <span class="input-group-text">
-                                <i class="bi bi-search"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                  </svg>
                             </span>
                             <input type="search" class="form-control" id="searchInput" type="text" placeholder="Search..." aria-label="Search bar">
                             <button id="sortButton1" type="button" class="btn btn-main sortButton">
-                                <i class="bi bi-three-dots-vertical"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+                                class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 
+                                    1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                  </svg>
                             </button>
                         </div>
                     </li>
@@ -49,21 +52,31 @@
                 <div id="viewToggler" class="btn-group" role="group" aria-label="viewToggler">
                     <input type="radio" class="btn-check btnradioPersonnel" name="btnViewDesk" id="btnradioPersonnel1" autocomplete="off" checked>
                     <label class="btn btn-main" for="btnradioPersonnel1">
-                        <span class="pe-lg-2"><i class="bi bi-list-ul"></i></span>
+                        <span class="pe-lg-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" 
+                            height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 
+                            1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 
+                            1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 
+                            1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 
+                            0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                          </svg></span>
                         <span class="d-none d-lg-inline-block">List</span>
                     </label>
                   
                     <input type="radio" class="btn-check btnradioGrid" name="btnViewDesk" id="btnradioGrid1" autocomplete="off">
                     <label class="btn btn-main" for="btnradioGrid1">
-                        <span class="pe-lg-2"><i class="bi bi-grid-fill"></i></span>
+                        <span class="pe-lg-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" 
+                            height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 
+                            0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 
+                            0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 
+                            1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 
+                            0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 
+                            1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+                          </svg></span>
                         <span class="d-none d-lg-inline-block">Grid</span>
                     </label>
-                  
-                    <!-- <input type="radio" class="btn-check btnradioOrg" name="btnViewDesk" id="btnradioOrg1" autocomplete="off">
-                    <label class="btn btn-main" for="btnradioOrg1">
-                        <span class="pe-lg-2"><i class="bi bi-diagram-3-fill"></i></span>
-                        <span class="d-none d-lg-inline-block">Org</span>
-                    </label> -->
+            
                   </div>
             </li>
             <li class="nav-item d-none d-md-inline-block px-2">
@@ -74,7 +87,11 @@
                     <li class="nav-item dropdown ps-2">
                         <a class="btn btn-main dropdown-toggle" href="#" id="editOptions" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="pe-2">
-                                <i class="bi bi-pencil"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                                fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 
+                                    10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                  </svg>
                             </span>
                             <span>Edit</span>
                         </a>
@@ -104,7 +121,11 @@
         <ul class="navbar-nav w-100 d-flex justify-content-center">
             <li class="nav-item px-1 scroll-alpha">
                 <button class="btn btn-sm btn-main" id="scrollLeft">
-                    <i class="bi bi-caret-left-fill"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                    fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                        <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1
+                         1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                      </svg>
                 </button>
             </li>
             <!-- A-Z scroller -->
@@ -113,7 +134,11 @@
             </li>
             <li class="nav-item px-1 scroll-alpha">
                 <button class="btn btn-sm btn-main" id="scrollRight">
-                    <i class="bi bi-caret-right-fill"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                    fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1
+                         1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                      </svg>
                 </button>
             </li>
             <li id="MOB-delete-text" class="nav-item px-2 d-none">
@@ -129,19 +154,36 @@
             <li class="nav-item">
                 <input type="radio" class="btn-check btnradioPersonnel" name="btnViewMob" id="btnradioPersonnel2" autocomplete="off" checked>
                 <label class="btn btn-mobile-bar shadow-none" for="btnradioPersonnel2">
-                    <i class="bi bi-list-ul"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                    fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0
+                         1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0
+                          0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3
+                           1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1
+                            0 0-2 1 1 0 0 0 0 2z"/>
+                      </svg>
                     <span class="CTAs d-block">List</span>
                 </label>
             </li>
             <li class="nav-item" id="FAB-toggle">
                 <div class="FAB-option">
                     <button class="btn FAB-sub-btn more-option-btn" id="">
-                        <i class="bi bi-three-dots"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                        fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0
+                             1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                          </svg>
                     </button>
                 </div>
                 <div class="FAB-option">
                     <button class="btn FAB-sub-btn show-del-person-btn" id="show-delMOB">
-                        <i class="bi bi-person-dash-fill"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                        fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0
+                             1h-4a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 
+                            3 3 0 0 0 0 6z"/>
+                          </svg>
                     </button>
                     <button type="button" id="MOB-cancel" class="btn btn-delete-cancel cancelDelete d-none">
                         Cancel
@@ -149,7 +191,13 @@
                 </div>
                 <div class="FAB-option">
                     <button class="btn FAB-sub-btn add-person-btn" id="">
-                        <i class="bi bi-person-plus-fill"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                        fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 
+                            3 3 0 0 0 0 6z"/>
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 
+                            1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                          </svg>
                     </button>
                     <button type="button" id="MOB-delete" class="btn btn-delete deleteAll d-none">
                         Delete
@@ -157,14 +205,31 @@
                 </div>
                 <button class="btn FAB-button position-absolute bottom-50" id="mobileEditButton">
                     <span id="" class="d-block">
-                        <i class="bi bi-pencil-fill"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                        fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 
+                            5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 
+                            9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 
+                            .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 
+                            13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 
+                            1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 
+                            0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                          </svg>
                     </span>
                 </button>
             </li>
             <li class="nav-item">
                 <input type="radio" class="btn-check btnradioGrid" name="btnViewMob" id="btnradioGrid2" autocomplete="off">
                 <label class="btn btn-mobile-bar shadow-none" for="btnradioGrid2">
-                    <i class="bi bi-grid-fill"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                    fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 
+                        1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 
+                        1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 
+                        5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 
+                        1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 
+                        0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+                      </svg>
                     <span class="CTAs d-block">Grid</span>
                 </label>
             </li>
@@ -264,7 +329,12 @@
                 <div class="row my-1">
                     <div class="col text-center">
                         <button id="themeButton" type="button" class="btn btn-main">
-                            Theme <i class="bi bi-paint-bucket"></i>
+                            Theme <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                            fill="currentColor" class="bi bi-paint-bucket" viewBox="0 0 16 16">
+                                <path d="M6.192 2.78c-.458-.677-.927-1.248-1.35-1.643a2.972 2.972 
+                                0 0 0-.71-.515c-.217-.104-.56-.205-.882-.02-.367.213-.427.63-.43.896-.003.304.064.664.173 
+                                1.044.196.687.556 1.528 1.035 2.402L.752 8.22c-.277.277-.269.656-.218.918.055.283.187.593.36.903.348.627.92 1.361 1.626 2.068.707.707 1.441 1.278 2.068 1.626.31.173.62.305.903.36.262.05.64.059.918-.218l5.615-5.615c.118.257.092.512.05.939-.03.292-.068.665-.073 1.176v.123h.003a1 1 0 0 0 1.993 0H14v-.057a1.01 1.01 0 0 0-.004-.117c-.055-1.25-.7-2.738-1.86-3.494a4.322 4.322 0 0 0-.211-.434c-.349-.626-.92-1.36-1.627-2.067-.707-.707-1.441-1.279-2.068-1.627-.31-.172-.62-.304-.903-.36-.262-.05-.64-.058-.918.219l-.217.216zM4.16 1.867c.381.356.844.922 1.311 1.632l-.704.705c-.382-.727-.66-1.402-.813-1.938a3.283 3.283 0 0 1-.131-.673c.091.061.204.15.337.274zm.394 3.965c.54.852 1.107 1.567 1.607 2.033a.5.5 0 1 0 .682-.732c-.453-.422-1.017-1.136-1.564-2.027l1.088-1.088c.054.12.115.243.183.365.349.627.92 1.361 1.627 2.068.706.707 1.44 1.278 2.068 1.626.122.068.244.13.365.183l-4.861 4.862a.571.571 0 0 1-.068-.01c-.137-.027-.342-.104-.608-.252-.524-.292-1.186-.8-1.846-1.46-.66-.66-1.168-1.32-1.46-1.846-.147-.265-.225-.47-.251-.607a.573.573 0 0 1-.01-.068l3.048-3.047zm2.87-1.935a2.44 2.44 0 0 1-.241-.561c.135.033.324.11.562.241.524.292 1.186.8 1.846 1.46.45.45.83.901 1.1181.31a3.497 3.497 0 0 0-1.066.091 11.27 11.27 0 0 1-.76-.694c-.66-.66-1.167-1.322-1.458-1.847z"/>
+                              </svg>
                         </button>
                     </div>                
                 </div>
@@ -498,7 +568,7 @@
     <script src="./vendor/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap Bundle with Popper? -->
     <script src="./vendor/js/bootstrap.min.js"></script>
-
+    <!-- Custom js -->
     <script src="./libs/js/index.js"></script>
 </body>
 
