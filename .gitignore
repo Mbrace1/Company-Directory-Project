@@ -1,3 +1,5 @@
+# folder for files
 /filesNotUsed
 
+# php connect to database file
 config.php

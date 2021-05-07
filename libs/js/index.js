@@ -220,7 +220,7 @@ function mainSorter() {
     function firstNameSorter() {
 
         $.ajax({
-            url: "./php/personnel/getAll.php",
+            url: "./libs/php/personnel/getAll.php",
             type: "POST",
             dataType: 'json',
             success: function(result) {
@@ -264,7 +264,7 @@ function mainSorter() {
     function lastNameSorter() {
 
         $.ajax({
-            url: "./php/personnel/getAll.php",
+            url: "./libs/php/personnel/getAll.php",
             type: "POST",
             dataType: 'json',
             success: function(result) {
@@ -308,7 +308,7 @@ function mainSorter() {
     function departmentSorter() {
         
         $.ajax({
-            url: "./php/personnel/getAll.php",
+            url: "./libs/php/personnel/getAll.php",
             type: "POST",
             dataType: 'json',
             success: function(result) {
@@ -351,7 +351,7 @@ function mainSorter() {
     function locationSorter() {
 
         $.ajax({
-            url: "./php/personnel/getAll.php",
+            url: "./libs/php/personnel/getAll.php",
             type: "POST",
             dataType: 'json',
             success: function(result) {
@@ -407,7 +407,7 @@ function mainSorter() {
 
     function jobTitleSorter() {
         $.ajax({
-            url: "./php/personnel/getAll.php",
+            url: "./libs/php/personnel/getAll.php",
             type: "POST",
             dataType: 'json',
             success: function(result) {
@@ -715,7 +715,7 @@ function personnelForms() {
         var email = $("#personInputEmail").val();
 
         $.ajax({
-            url: "./php/personnel/newPersonValid.php",
+            url: "./libs/php/personnel/newPersonValid.php",
             type: "POST",
             dataType: 'json',
             data: {
@@ -790,7 +790,7 @@ function personnelForms() {
             var id = $("#personId").val();
     
             $.ajax({
-                url: "./php/personnel/updatePerson.php",
+                url: "./libs/php/personnel/updatePerson.php",
                 type: "POST",
                 dataType: 'json',
                 data: {
@@ -811,7 +811,7 @@ function personnelForms() {
                         $('.modal-read-only').toggleClass('d-block d-none');
 
                         $.ajax({
-                            url: "./php/departments/getDepartmentByID.php",
+                            url: "./libs/php/departments/getDepartmentByID.php",
                             type: "POST",
                             dataType: 'json',
                             data: {
@@ -822,7 +822,7 @@ function personnelForms() {
                                 var depName = result.data[0].name;
                                 var locID = result.data[0].locationID
                                 $.ajax({
-                                    url: "./php/locations/getLocationByID.php",
+                                    url: "./libs/php/locations/getLocationByID.php",
                                     type: "POST",
                                     dataType: 'json',
                                     data: {
@@ -939,7 +939,7 @@ function editButtons() {
             deleteMode();
             // AJAX CALL TO DEL PERSONNEL
             $.ajax({
-                url: "./php/personnel/deletePersonnel.php",
+                url: "./libs/php/personnel/deletePersonnel.php",
                 type: "POST",
                 dataType: 'json',
                 data: {
@@ -1088,7 +1088,7 @@ function hideShowAlphaArrow() {
 
 function getAllDepartments() {
     $.ajax({
-        url: "./php/departments/getAllDepartments.php",
+        url: "./libs/php/departments/getAllDepartments.php",
         type: "POST",
         // data: null,
         success: function(result) {
@@ -1103,7 +1103,7 @@ function getAllDepartments() {
 
 function getAllLocations(departmentsData) {
     $.ajax({
-        url: "./php/locations/getAllLocations.php",
+        url: "./libs/php/locations/getAllLocations.php",
         type: "POST",
         // data: null,
         success: function(result) {
@@ -1171,7 +1171,7 @@ function getAllLocations(departmentsData) {
                     var delDepartment = departmentList.next();
 
                     $.ajax({
-                        url: "./php/departments/deleteDepartmentByID.php",
+                        url: "./libs/php/departments/deleteDepartmentByID.php",
                         type: "POST",
                         dataType: 'json',
                         data: {
@@ -1219,7 +1219,7 @@ function getAllLocations(departmentsData) {
                     // console.log(locationName)
 
                     $.ajax({
-                        url: "./php/departments/insertDepartment.php",
+                        url: "./libs/php/departments/insertDepartment.php",
                         type: "POST",
                         dataType: 'json',
                         data: {
@@ -1267,7 +1267,7 @@ function getAllLocations(departmentsData) {
                     // var depToRemove = $(this).closest('.row')
 
                     $.ajax({
-                        url: "./php/locations/deleteLocationByID.php",
+                        url: "./libs/php/locations/deleteLocationByID.php",
                         type: "POST",
                         dataType: 'json',
                         data: {
@@ -1311,7 +1311,7 @@ function getAllLocations(departmentsData) {
                     var newlocationName = $('#add-loc-input').val()
 
                     $.ajax({
-                        url: "./php/locations/insertLocation.php",
+                        url: "./libs/php/locations/insertLocation.php",
                         type: "POST",
                         dataType: 'json',
                         data: {
