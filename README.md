@@ -33,12 +33,12 @@ The main functionaility of the program involves the ability to add, delete and u
 * Html 5 and CSS
 * Bootstrap 5
 * Bootstrap Icons 1.4.0
-* JQuery 3.5.1
+* JQuery 3.6.0
 * PHP 7.4.12 and cURL
 * MySQL/MariaDB 10.4.16
 
 ## How To Use
-Add the sql found within the php folder to the your MySQL/MariaDB database in your local server. To understand how to setup a local server and how you connect to a database I recommend watching the [Dani Krossing PHP Tutorials](https://www.youtube.com/playlist?list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-) - in particluar: 
+Add the sql found within the php folder to your MySQL/MariaDB database in your local server. To understand how to setup a local server, and how you connect to a database I recommend watching the [Dani Krossing PHP Tutorials](https://www.youtube.com/playlist?list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-) - in particluar: 
 * [Installing A Local Server for PHP](https://www.youtube.com/watch?v=mXdpCRgR-xE&list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-&index=2&t=348s&ab_channel=DaniKrossingDaniKrossingVerified)
 * [How to Create a MySQL Database for PHP](https://www.youtube.com/watch?v=u10xZgNpfCQ&list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-&index=29&ab_channel=DaniKrossingDaniKrossingVerified)
 * [How to connect to a database in PHP](https://www.youtube.com/watch?v=ILyf16MEvHM&list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-&index=36&ab_channel=DaniKrossingDaniKrossingVerified)
