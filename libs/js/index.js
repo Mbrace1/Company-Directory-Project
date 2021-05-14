@@ -86,6 +86,21 @@ function pageLoad() {
 
     scroller()
 
+    $(document).ready(function() { 
+        setTimeout(function(){
+
+            $('.reveal-item').toggleClass('reveal-item');
+            $('.pre-loader').toggleClass('pre-loader');
+        
+          }, 1000);
+        
+        setTimeout(function(){
+
+            $('#pre-loader').addClass('d-none');  
+        
+          }, 2000);
+    })
+
 }
 
 // ##################################################################################

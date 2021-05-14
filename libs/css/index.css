@@ -29,7 +29,7 @@
     --text-primary:  #3b428f;
     --text-secondary: #cecece;
 
-    --background-primary: #3b428fc1;
+    --background-primary: #7579ac;
     --background-secondary: white;
 
     --border-primary: var(--text-primary);
@@ -114,6 +114,41 @@ select{
 img {
     filter: grayscale(80%);
   }
+
+
+/* ################################################################################## */
+/* ################################################################################## */
+/* ################################################################################## */
+/* pre-loaders */
+#pre-loader {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: var(--background-primary);
+    z-index: 99;
+    text-align: center;
+}
+  
+#loading-image {
+    fill: var(--text-secondary);
+    margin:auto;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    position:fixed;
+}
+
+.reveal-item {
+    opacity: 0;
+}
+
+.pre-loader {
+    background: var(--background-primary);
+    border-radius: 15px;
+}
 
 /* ################################################################################## */
 /* ################################################################################## */
@@ -376,7 +411,6 @@ img {
 /* scroller*/
 
 #alphaScroll {
-    width: 75%;
     height: 40px;
     z-index: 100;
     font-size: 1em;
