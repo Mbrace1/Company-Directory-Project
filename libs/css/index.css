@@ -94,15 +94,15 @@ body {
     height: 100vh;
 }
 
-#contentTypes::-webkit-scrollbar, .navbar::-webkit-scrollbar{
+.contentTypes::-webkit-scrollbar, .navbar::-webkit-scrollbar{
     width: 0.5rem;
 }
 
-#contentTypes::-webkit-scrollbar-track, .navbar::-webkit-scrollbar-track{
+.contentTypes::-webkit-scrollbar-track, .navbar::-webkit-scrollbar-track{
 background: var(--btn--primary-back);
 }
 
-#contentTypes::-webkit-scrollbar-thumb, .navbar::-webkit-scrollbar-thumb {
+.contentTypes::-webkit-scrollbar-thumb, .navbar::-webkit-scrollbar-thumb {
 background: var(--text-primary);
 }
 
@@ -176,11 +176,16 @@ img {
 .btn-main:focus,
 .btn-main:checked,
 .btn-check:checked+.btn-main:active,
-.btn-check:checked+.btn-main  {
+.btn-check:checked+.btn-main,
+.nav-pills .nav-link.active {
     color: var(--btn-hover-color);
     background-color: var(--btn-hover-back);
     border-color: var(--text-primary);
     /* box-shadow: var(--background-primary); */
+}
+
+.nav-link, .nav-link:focus, .nav-link:hover{
+    color: var(--text-primary);
 }
 
 .btn-main-outline {
@@ -193,7 +198,7 @@ img {
 .btn-main-outline:focus,
 .btn-main-outline:checked,
 .btn-check:checked+.btn-main-outline:active,
-.btn-check:checked+.btn-main-outline   {
+.btn-check:checked+.btn-main-outline    {
     color: var(--btn-hover-color);
     background-color: var(--btn-hover-back);
     border-color: var(--background-primary);
@@ -210,6 +215,18 @@ img {
     color: var(--background-secondary);
     background-color: black;
     box-shadow: 0px 1px 9px 0px black;
+}
+
+#scrollToTop {
+    position: absolute;
+    bottom: 12vh;
+    right: 20px;
+}
+
+#backToTop {
+    width: 60px;
+    height: 55px;
+    border-radius: 50%;
 }
 
 /* ################################################################################## */
@@ -260,8 +277,13 @@ img {
     color: var(--text-primary);
 }
 
-.deleteText {
+#deleteText {
     color: var(--delete-mess);
+}
+
+#secondaryNav {
+    background-color: var(--background-secondary);
+    border-bottom: 1px solid var(--border-primary);
 }
 
 /* ################################################################################## */
@@ -361,11 +383,6 @@ img {
     width: 75px;
 }
 
-.navbar-expanded {
-    transition: all 0.8s ease;
-    height: 15vh!important;
-}
-
 .FAB-option.FAB-options-active .more-option-btn {
     background: orange;
     transition: all 1s ease;
@@ -410,7 +427,7 @@ img {
 /* ################################################################################## */
 /* scroller*/
 
-#alphaScroll {
+.scroll {
     height: 40px;
     z-index: 100;
     font-size: 1em;
@@ -418,12 +435,12 @@ img {
     text-align: center;
 }
 
-#alphaHtml {
+#alphaHtml,#alphaHtmlDep,#alphaHtmlLoc {
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
-#alphaHtml::-webkit-scrollbar {
+#alphaHtml::-webkit-scrollbar,#alphaHtmlDep::-webkit-scrollbar,#alphaHtmlLoc::-webkit-scrollbar {
     display: none;
 }
 
@@ -436,6 +453,7 @@ img {
 .list-group-item {
     color: white;
     background-color: var(--background-primary);
+    height: 31px;
 }
 
 
@@ -466,7 +484,7 @@ img {
 }
 
 /* DIFFERENT VIEWS */
-#contentTypes {
+.contentTypes {
     height: 100%;
     transition: all 0.8s;
     overflow-y: scroll;
@@ -477,14 +495,6 @@ img {
 
 #listView,#personnel-list, #personnel-list.list-unstyled {
     height: 100%;
-}
-
-.heightFromtop {
-    top: 15vh!important;
-}
-
-.heightAdjust {
-    height: 75vh!important;
 }
 
 .personnel-item:hover {
@@ -507,12 +517,17 @@ img {
 }
 
 .btn-fail {
-    color: var(--warning-color);
+    color: red!important;
     font-weight: bold;
 }
 
+.btn-disabled {
+    color: grey;
+    font-weight: bold;
+    opacity: 0.5;
+}
 
-#searchFor {
+.searchFor {
     color: var(--letter-div);
 }
 
@@ -522,8 +537,8 @@ img {
 /* GRID VIEW STYLE */
 
 .person-grid {
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    max-height: 300px;
     background: transparent;
     /* border: 4px solid #6f6f6f38; */
 }
@@ -535,9 +550,9 @@ img {
 
 .person-pic-grid {
     /* width: 100%; */
-    width: 160px;
+    width: 120px;
     margin: 0 auto;
-    height: 160px;
+    height: 120px;
     border-radius: 50%;
     border: 1px solid var(--text-primary);
     color: #ffffff63;
@@ -583,8 +598,13 @@ img {
     text-align: left;
 }
 
+.depTextSize {
+    font-size: 0.8em;
+}
+
 /* general styles for list and grid */
 .personnel-item {
+    box-shadow: 2px 4px 10px 0px var(--btn-hover-back);;
     background: var(--background-secondary);
     border-radius: 10px;
     border: 1px solid var(--border-primary);
@@ -593,12 +613,15 @@ img {
 .personnel-sub-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .letter-divider {
     border-bottom: 2px solid var(--text-secondary);
     font-size: 2em;
     color: var(--letter-div);
+    text-align: center;
+    opacity: 0.5;
 }
 /* ################################################################################## */
 /* ################################################################################## */
@@ -606,6 +629,9 @@ img {
 .modal-header, .modal-footer {
     background: var(--background-primary);
     color: var(--text-secondary);
+    height: 60px;
+    padding: 0.5rem 1.5rem;
+    justify-content: space-between;
 }
 
 .modal-footer{
@@ -621,6 +647,18 @@ img {
     height: 500px;
 }
 
+#alertModal .modal-content {
+    height: 160px;
+}
+
+#alertModal .modal-header, #alertModal .modal-footer {
+    height: 40px;
+}
+
+#alertModal .modal-footer {
+    padding: 0px;
+}
+
 .modal-body {
     background: var(--background-secondary);
     overflow-y: auto;
@@ -628,7 +666,26 @@ img {
 
 #sort-note {
     font-size: 11px;
-    font-weight: bold;
+    /* font-weight: bold; */
+}
+
+.form-message {
+    font-size: 0.8em;
+}
+
+.form-text {
+    color: var(--text-secondary)
+}
+
+.form-control{
+    text-align: center;
+}
+
+.form-select {
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+    padding-left: 36px;
 }
 
 #locDepEdit h6.border {
@@ -636,6 +693,14 @@ img {
     color: var(--background-secondary);
 }
 
+.modal-sub-header {
+    background: var(--btn--primary-bord);
+    color: var(--background-secondary);
+}
+
+.badge {
+    padding: .35em .35em!important;
+}
 
 /* ################################################################################## */
 /* ################################################################################## */
@@ -690,7 +755,7 @@ img {
 
 @media (max-width: 1200px) {
 
-    .CTAs, .person-text, #alphaScroll {
+    .CTAs, .person-text, .scroll {
         font-size: 0.8em;
     }
 
@@ -698,7 +763,7 @@ img {
         /* border: none;
         border-bottom: 2px solid #6f6f6f38; */
         width: 100%;
-        width: 250px;
+        width: 220px;
     }
 
     .person-list {
@@ -713,11 +778,19 @@ img {
 
 @media (max-width: 768px) {
 
+    .searchInput {
+        font-size: 0.8em;
+    }
+
     /* MAIN CONTENT STYLES */
     #content {
-        width: 100%;
-        /* right: auto; */
-        height: 75vh;
+        top: 20vh;
+        height: 70vh;
+    }
+
+    #mainNav {
+        height: 20vh;
+
     }
 
     .letter-divider {
@@ -750,10 +823,9 @@ img {
         font-size: 1.5em;
     }
 
-    #contentTypes::-webkit-scrollbar {
+    .contentTypes::-webkit-scrollbar {
         display: none;
     }
-    
 }
 
 /* ################################################################################## */
@@ -774,14 +846,33 @@ img {
         width: 100%;
     }
 
-    #mainNav {
-        height: 20vh;
-
+    #mainNav-content .nav-link {
+        font-size: 0.8em;
+        padding-right: 0.25rem;
+        padding-left: 0.25rem;
     }
 
-    #content {
-        top: 20vh;
-        height: 70vh;
+    #mobileBottomNav .nav-link {
+        font-size: 0.6em;
+        padding: .25rem .25rem;
+    }
+
+    #deleteText {
+        font-size: 0.8em;
+    }
+
+    #personnelSearch .input-group-text, #sortButtonPerson,
+    #departmentSearch .input-group-text, #sortButtonDep,
+    #locationSearch .input-group-text, #sortButtonLoc {
+        padding: .3em .4em;
+    }
+
+    #viewToggler .btn-main {
+        padding: 0.3em 0.45em;
+    }
+
+    .searchInput {
+        font-size: 0.7em;
     }
 
 }

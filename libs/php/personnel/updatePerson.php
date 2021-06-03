@@ -39,6 +39,12 @@
     if(empty($nameF) || empty($job) || empty($nameL) || empty($dep) || empty($email)) {
         $output['data'] = "empty error";
     }
+    elseif (strlen($nameL) > 25) {
+        $output['data'] = "last name length error";
+    }
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $output['data'] = "email error";
+    }
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $output['data'] = "email error";
     }

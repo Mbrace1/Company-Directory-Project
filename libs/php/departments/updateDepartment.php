@@ -33,12 +33,13 @@
 	}	
 
 	
-	$locationID = $_POST['locationID'];
-	$departmentName = trim(strtolower($_POST['departmentName']));
+	$departmentName = ucwords(trim($_POST['name']));
+    $id = $_POST['id'];
+    $locationID = $_POST['locationID'];
 
 
-	if(empty($locationID) || empty($departmentName)) {
-		$output['data']= "empty error";
+	if(empty($departmentName)) {
+		$output['data'] = "empty error";
 	}
 	elseif (!preg_match("/^[a-zA-Z-' ]*$/",$departmentName)) {
         $output['data'] = "name error";
@@ -46,47 +47,53 @@
 	elseif (strlen($departmentName) < 4 or strlen($departmentName) > 25) {
 		$output['data'] = "dep length error";
 	} else {
-		// same name check
+		// QUERY NUMBER OF ROWS WITH SAME NAME
 		$query = "SELECT name from department WHERE name =?";
 
-        if ($stmt = $conn->prepare($query)){
-    
-            $stmt->bind_param("s", $departmentName);
-    
-            if($stmt->execute()){
-                $stmt->store_result();
-    
-                $dep_check= ""; 
-                // bind result only works with one selector in query ( eg email)
-                $stmt->bind_result($dep_check);
-                $stmt->fetch();
-    
-                if ($stmt->num_rows == 1){
-    
-				$output['data'] =  "dep already exists";
-    
-                mysqli_close($conn);
+		if ($stmt = $conn->prepare($query)){
+	
+			$stmt->bind_param("s", $departmentName);
+	
+			if($stmt->execute()){
+				$stmt->store_result();
+	
+				$email_check= ""; 
+				// bind result only works with one selector in query ( eg email)
+				$stmt->bind_result($email_check);
+				$stmt->fetch();
+	
+				if ($stmt->num_rows >= 1){
+	
+				$output['data'] = "dep already exists";
+	
+				mysqli_close($conn);
 
 				} else {
-					$query = 'INSERT INTO department (name, locationID) VALUES("' . ucwords($departmentName) . '",' . $locationID . ')';
+					// run query
+					$sql = "UPDATE department SET name=?, locationID=? WHERE id=?";
 
-					$result = $conn->query($query);
-					
-					if ($result) {
-			
+					$stmt= $conn->prepare($sql);
+					$stmt->bind_param("sii", $departmentName, $locationID, $id);
+					$stmt->execute();
+				
+					if ($stmt) {
+				
 						$output['status']['code'] = "200";
 						$output['status']['name'] = "ok";
 						$output['status']['description'] = "success";
 						$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-						$output['data'] = 'Added';
-			
+						$output['data'] = "department updated";
+					
+						mysqli_close($conn);
+				
 						echo json_encode($output); 
+				
 						exit;
 					}
 				}
 			}
 		}
-	}
+	}	
 
 
 	$output['status']['code'] = "400";

@@ -33,54 +33,60 @@
 	}	
 
 	
-	$locationID = $_POST['locationID'];
-	$departmentName = trim(strtolower($_POST['departmentName']));
+	$locationName = ucwords(trim($_POST['name']));
+    $id = $_POST['id'];
 
 
-	if(empty($locationID) || empty($departmentName)) {
-		$output['data']= "empty error";
+	if(empty($locationName)) {
+		$output['data'] = "empty error";
 	}
-	elseif (!preg_match("/^[a-zA-Z-' ]*$/",$departmentName)) {
+	elseif (!preg_match("/^[a-zA-Z-' ]*$/",$locationName)) {
         $output['data'] = "name error";
     }
-	elseif (strlen($departmentName) < 4 or strlen($departmentName) > 25) {
-		$output['data'] = "dep length error";
+	elseif (strlen($locationName) < 4 or strlen($locationName) > 25) {
+		$output['data'] = "loc length error";
 	} else {
-		// same name check
-		$query = "SELECT name from department WHERE name =?";
+		// QUERY NUMBER OF ROWS WITH SAME EMAIL
+		$query = "SELECT name from location WHERE name =?";
 
-        if ($stmt = $conn->prepare($query)){
-    
-            $stmt->bind_param("s", $departmentName);
-    
-            if($stmt->execute()){
-                $stmt->store_result();
-    
-                $dep_check= ""; 
-                // bind result only works with one selector in query ( eg email)
-                $stmt->bind_result($dep_check);
-                $stmt->fetch();
-    
-                if ($stmt->num_rows == 1){
-    
-				$output['data'] =  "dep already exists";
-    
-                mysqli_close($conn);
+		if ($stmt = $conn->prepare($query)){
+	
+			$stmt->bind_param("s", $locationName);
+	
+			if($stmt->execute()){
+				$stmt->store_result();
+	
+				$email_check= ""; 
+				// bind result only works with one selector in query ( eg email)
+				$stmt->bind_result($email_check);
+				$stmt->fetch();
+	
+				if ($stmt->num_rows >= 1){
+	
+				$output['data'] = "loc already exists";
+	
+				mysqli_close($conn);
 
 				} else {
-					$query = 'INSERT INTO department (name, locationID) VALUES("' . ucwords($departmentName) . '",' . $locationID . ')';
+					// run query
+					$sql = "UPDATE location SET name=? WHERE id=?";
 
-					$result = $conn->query($query);
-					
-					if ($result) {
-			
+					$stmt= $conn->prepare($sql);
+					$stmt->bind_param("si", $locationName, $id);
+					$stmt->execute();
+				
+					if ($stmt) {
+				
 						$output['status']['code'] = "200";
 						$output['status']['name'] = "ok";
 						$output['status']['description'] = "success";
 						$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-						$output['data'] = 'Added';
-			
+						$output['data'] = "location updated";
+					
+						mysqli_close($conn);
+				
 						echo json_encode($output); 
+				
 						exit;
 					}
 				}

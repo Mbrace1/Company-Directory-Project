@@ -29,7 +29,8 @@
 
 	}	
 
-	$query = 'SELECT id, name, locationID FROM department';
+	$query = 'SELECT d.id, d.name, l.name AS location, count(p.departmentID) AS 
+	personnelCount FROM department AS d LEFT JOIN location l ON (l.id = d.locationID) LEFT JOIN personnel AS p ON d.id=p.departmentID GROUP BY d.name';
 
 	$result = $conn->query($query);
 	

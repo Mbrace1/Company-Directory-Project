@@ -42,7 +42,7 @@
 	elseif (!preg_match("/^[a-zA-Z-' ]*$/",$newLocation)) {
         $output['data'] = "name error";
     }
-	elseif (strlen($newLocation) < 4) {
+	elseif (strlen($newLocation) < 4 or strlen($newLocation) > 25) {
 		$output['data'] = "loc length error";
 	} else {
 

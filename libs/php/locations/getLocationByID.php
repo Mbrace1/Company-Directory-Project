@@ -31,7 +31,7 @@
 
 	}	
 
-	$query = 'SELECT id, name FROM location WHERE id = ' . $_POST['id'];
+	$query = 'SELECT d.id, d.name, l.name as location FROM location AS l LEFT JOIN department AS d ON d.locationID=l.id WHERE l.id = ' . $_POST['id'];
 
 	$result = $conn->query($query);
 	

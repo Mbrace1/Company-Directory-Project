@@ -33,44 +33,38 @@
 
 	}	
 
-	$locationID = $_POST['locationID'];
-
-	$query = 'SELECT * FROM department WHERE locationID=' .$locationID;
-
-	$result = $conn->query($query);
-	$row_cnt = $result->num_rows;
-
-	
-	if (!$result) {
-
-		$output['status']['code'] = "400";
-		$output['status']['name'] = "executed";
-		$output['status']['description'] = "query failed";	
-		$output['data'] = [];
-
-		mysqli_close($conn);
-
-		echo json_encode($output); 
-
-		exit;
-
-	}
-
-	if(empty($locationID)) {
-		$output['data'] = "empty error";
-	} elseif($row_cnt > 0) {
-		$output['data'] = $row_cnt;
-	} else {
-		$query = 'DELETE FROM location WHERE id = ' . $locationID;
+	$locationID = $_POST['locationIDs'];
+	foreach ($locationID as $id) {
+		$query = 'SELECT count(id) FROM department WHERE locationID=' .$id;
 
 		$result = $conn->query($query);
-		
+		$rows = mysqli_fetch_array($result);
+		// $count_recall = $ChartRow['totalitems'];
+		if ($rows[0] > 0) {
+			$output['data'] = 'has dependencies';
+			$output['status']['code'] = "400";
+			$output['status']['name'] = "executed";
+			$output['status']['description'] = "query failed";	
+	
+			mysqli_close($conn);
+			
+			echo json_encode($output); 
+
+			exit;
+		}
+	}
+	
+	foreach ($locationID as $id) {
+		$query = 'DELETE FROM location WHERE id = ' . $id;
+
+		$result = $conn->query($query);
+		$output['data'] = 'deleted locations';
 		if (!$result) {
 	
 			$output['status']['code'] = "400";
 			$output['status']['name'] = "executed";
 			$output['status']['description'] = "query failed";	
-			$output['data'] = 0;
+			$output['data'] = [];
 	
 			mysqli_close($conn);
 	
@@ -79,15 +73,15 @@
 			exit;
 	
 		}
-	
-		$output['status']['code'] = "200";
-		$output['status']['name'] = "ok";
-		$output['status']['description'] = "success";
-		$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-		
-		mysqli_close($conn);
-	
 	}
+
+	$output['status']['code'] = "200";
+	$output['status']['name'] = "ok";
+	$output['status']['description'] = "success";
+	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
+	
+	mysqli_close($conn);
+
 
 	echo json_encode($output); 
 ?>

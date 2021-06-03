@@ -29,6 +29,9 @@
     
 	if(empty($_POST['ids'])) {
 		$output['data'] = 'empty error';
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "query failed";	
 	} else {
 		foreach ($_POST['ids'] as $id) {
 			$query = 'DELETE FROM personnel WHERE id = ' . $id;
