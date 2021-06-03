@@ -23,11 +23,12 @@ The main functionaility of the program involves the ability to add, delete and u
 * Change view between List (shows basic information on personnel) and Grid (shows more detailed information on personnel).
 
 ## Screenshots
-![Example screenshot](./images/grid-optionModal.png)
-![Example screenshot](./images/list-firstName.png)
-![Example screenshot](./images/search-edit.png)
-![Example screenshot](./images/mobView.png)
-![Example screenshot](./images/moreEditOptions.png)
+![Example screenshot](./images/Project2Screenshot1.png)
+![Example screenshot](./images/Project2Screenshot2.png)
+![Example screenshot](./images/Project2Screenshot3.png)
+![Example screenshot](./images/Project2Screenshot4.png)
+![Example screenshot](./images/Project2Screenshot5.png)
+![Example screenshot](./images/Project2Screenshot6.png)
 
 ## Technologies Used
 * Html 5 and CSS
