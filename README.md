@@ -231,7 +231,7 @@ Below includes basic examples of how the code for getting, adding and deleting p
 Project is: _In Progress_, 
 
 ## Demo
-Available to view at: [michaelbracey.co.uk](https://michaelbracey.co.uk/)
+Available to view at: [michaelbracey.co.uk](https://michaelbracey.co.uk/project2.html)
 
 ## Contact
 Created by [@Mbrace1](https://github.com/Mbrace1)
