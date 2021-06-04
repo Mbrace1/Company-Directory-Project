@@ -26,8 +26,6 @@ The main functionaility of the program involves the ability to add, delete and u
 ![Example screenshot](./images/Project2Screenshot1.png)
 ![Example screenshot](./images/Project2Screenshot2.png)
 ![Example screenshot](./images/Project2Screenshot3.png)
-![Example screenshot](./images/Project2Screenshot4.png)
-![Example screenshot](./images/Project2Screenshot5.png)
 ![Example screenshot](./images/Project2Screenshot6.png)
 
 ## Technologies Used
