@@ -39,6 +39,9 @@
     if(empty($nameF) || empty($job) || empty($nameL) || empty($dep) || empty($email)) {
         $output['data'] = "empty error";
     }
+    elseif (strlen($nameF) > 25) {
+        $output['data'] = "first name length error";
+    }
     elseif (strlen($nameL) > 25) {
         $output['data'] = "last name length error";
     }
@@ -51,9 +54,10 @@
     elseif (!preg_match("/^[a-zA-Z-' ]*$/",$nameF) || !preg_match("/^[a-zA-Z-' ]*$/",$nameL)) {
         $output['data'] = "name error";
     } 
-    elseif (strlen($job) < 4) {
+    elseif (strlen($job) < 4 or strlen($job) > 25) {
         $output['data'] = "job length error";
-    } else {
+    } 
+    else {
         // run query
         $sql = "UPDATE personnel SET firstName=?, lastName=?, jobTitle=?, email=?, departmentId=? WHERE id=?";
 

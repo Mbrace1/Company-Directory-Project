@@ -2,7 +2,7 @@
 // ################################ MODALS ##########################################
 // ##################################################################################
 // MODAL RESET VALUES, TEXT ETC ON CLOSE
-$('.modal').on('hidden.bs.modal', function (e) {
+$('.modal.fade').on('hidden.bs.modal', function (e) {
 
     // REMOVE STYLING FROM INPUT BOXES
     $(`#personInputFname, #personInputLname, #personInputJob ,#personInputDep ,#personInputEmail,
